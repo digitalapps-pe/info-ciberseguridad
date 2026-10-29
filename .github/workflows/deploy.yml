@@ -37,14 +37,13 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: build
-
-    deploy:
-      needs: build
-      runs-on: ubuntu-latest
-      environment:
-        name: github-pages
-        url: ${{ steps.deployment.outputs.page_url }}
-      steps:
-        - name: Publicar en Github Pages
-          id: deployment 
-          uses: actions/deploy-pages@v4
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar en Github Pages
+        id: deployment 
+        uses: actions/deploy-pages@v4
